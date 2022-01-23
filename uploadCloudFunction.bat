@@ -1,0 +1,1 @@
+"E:\temp\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-4g98baus1fe2cc61 --n quickstartFunctions --r --project "E:\temp\hust-avatar" --report_first --report

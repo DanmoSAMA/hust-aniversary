@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<!-- <view class="container" bindtap="toChoose">
+  <view class="container-bg">
+      <image src="../../imgs/index.png" class="container-bg-img"></image>
+  </view>
+</view> -->
+<image src="../../imgs/index.png" class="bg" bindtap="toSelect"></image>
