@@ -3,7 +3,13 @@
     position: absolute;
     z-index: -1;
     width: 100%;
-    height: 50%;
+    height: 100%;
+    top: -30rpx;
+    transition: top .3s;
+}
+
+.select-bg.resize {
+    top: -210rpx;
 }
 
 .select-container {
@@ -11,7 +17,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background-color: red; */
 }
 
 .select-container-btn {
@@ -23,6 +28,8 @@
     border-radius: 20rpx;
     color: #fff;
     padding: 0;
+    height: 5vh;
+    line-height: 5vh;
 }
 
 .select-container-btn.hidden {
@@ -30,18 +37,21 @@
 }
 
 .select-container-upper {
-    width: 360rpx;
-    height: 360rpx;
+    width: 28vh;
+    /* height: 360rpx; */
+    height: 28vh;
     border-radius: 5%;
     overflow: hidden;
-    margin-top: 30rpx;
+    margin-top: 2vh;
     background-color: #fff;
     transition: all .3s;
 }
 
 .select-container-upper.resize {
-    width: 180rpx;
-    height: 180rpx;
+    /* width: 180rpx; */
+    /* height: 180rpx; */
+    width: 14vh;
+    height: 14vh;
 }
 
 .select-container-upper-img {
@@ -50,29 +60,37 @@
 }
 
 .select-container-main {
-    margin-top: 80rpx;
+    margin-top: 6.67vh;
+    padding-top: 3.33vh;
     display: flex;
     flex-wrap: wrap;
-    height: 860rpx;
-    padding-top: 40rpx;
-    justify-content: center;
+    height: 58vh;
     background-color: #fff;
     border-top-left-radius: 50rpx;
     border-top-right-radius: 50rpx;
 }
 
 .select-container-main.resize {
-    height: 1090rpx;
+    /* height: 1090rpx; */
+    height: 80vh;
 }
 
 .select-container-main-img_container {
-    width: 180rpx;
-    height: 180rpx;
-    margin: 30rpx;
+    width: 24vw;
+    height: 24vw;
+    margin: 0 4.66vw 30rpx 4.66vw;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.select-container-main-img_container.selected {
+    border: 5rpx solid #D4190C;
+    border-radius: 18rpx;
 }
 
 .select-container-main-img_container-img {
-    width: 90%;
-    height: 90%;
+    width: 85%;
+    height: 85%;
 }

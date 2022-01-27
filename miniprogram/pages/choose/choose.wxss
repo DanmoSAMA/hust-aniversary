@@ -11,10 +11,17 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0rpx 0rpx 12rpx rgba(0, 0, 0, .15);
+    width: 393rpx;
+    height: 393rpx;
+    margin: 200rpx 0 120rpx 0;
+    border-radius: 20rpx;
+    overflow: hidden;
+    position: relative;
+}
+
+.choose-container-avatar-canvas {
     width: 380rpx;
     height: 380rpx;
-    margin: 100rpx 0;
-    border-radius: 20rpx;
 }
 
 .choose-container-avatar-img {
@@ -22,11 +29,11 @@
     height: 100%;
 }
 
-.choose-container-choose_btn, 
-.choose-container-download_btn,
+.choose-container-choose_btn,
+.choose-container-save_btn,
 .choose-container-preview_btn {
-    width: 380rpx!important;
-    height: 120rpx!important;
+    width: 380rpx !important;
+    height: 120rpx !important;
     border-radius: 25rpx;
     display: flex;
     justify-content: center;
@@ -39,7 +46,7 @@
     letter-spacing: 5rpx;
 }
 
-.choose-container-download_btn,
+.choose-container-save_btn,
 .choose-container-preview_btn {
     margin-top: 60rpx;
     background-color: #D4190C;

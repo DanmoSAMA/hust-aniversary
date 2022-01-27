@@ -1,12 +1,12 @@
 <!--pages/select/select.wxml-->
-<image src="cloud://cloud1-4g98baus1fe2cc61.636c-cloud1-4g98baus1fe2cc61-1309371877/bg.png" class="select-bg"></image>
+<image src="../../imgs/bg.png" class="{{isScrollUp? 'select-bg' : 'select-bg resize'}}"></image>
 <view class="select-container">
     <view class="{{isScrollUp ? 'select-container-upper' : 'select-container-upper resize' }}" bindtap="toChoose">
         <image class="select-container-upper-img" src="{{borderUrl}}"></image>
     </view>
     <button class="{{isScrollUp ? 'select-container-btn' : 'select-container-btn hidden' }}">点击上方选择图片</button>
     <scroll-view class="{{isScrollUp ? 'select-container-main' : 'select-container-main resize' }}" enable-flex="true" scroll-y="true" bindscrolltoupper="scrollUp" bindscrolltolower="scrollDown" upper-threshold="50" lower-threshold="500">
-        <view class="select-container-main-img_container" wx:for="{{imgUrlArr}}">
+        <view class="{{item === borderUrl ? 'select-container-main-img_container selected' : 'select-container-main-img_container'}}" wx:for="{{imgUrlArr}}">
             <image class="select-container-main-img_container-img" src="{{item}}" bindtap="selectBorder" data-url="{{item}}"></image>
         </view>
     </scroll-view>

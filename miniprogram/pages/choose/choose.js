@@ -1,33 +1,10 @@
-// pages/choose/choose.ts
-// 获取应用实例
 const app = getApp()
-let ctx = null
 Page({
     data: {
-        // 用户是否选择头像
-        isAvatarChosen: false,
-        // 用户是否预览了头像(即新的头像是否生成)
         isGenerated: false,
-        // 头像框url
-        borderUrl: '',
-        // 头像url
-        avatarUrl: '',
-        // 像素比，防止图片模糊
-        pixelRatio: 1,
-        // canvas
-        canvas: null,
-        // ctx
-        ctx: null
+        pixelRatio: 1
     },
-    onLoad() {
-        this.setData({borderUrl: app.globalData.borderUrl, avatarUrl: app.globalData.cutImage})
-        console.log(this.data)
-        // const eventChannel = this.getOpenerEventChannel()
-        // eventChannel.on("getBorderUrl", data => {
-        //     this.setData({
-        //         borderUrl: data
-        //     })
-        // })
+    async onLoad() {
         wx.getSystemInfo({
             success: res => {
                 this.setData({
@@ -35,93 +12,114 @@ Page({
                 })
             }
         })
-        wx.createSelectorQuery()
-            .select('#canvas')
-            .fields({
-                node: true,
-                size: true,
+        const {
+            borderUrl,
+            cutImage
+        } = app.globalData
+        // console.log('globalData', app.globalData)
+        if (cutImage != '') {
+            this.setData({
+                isGenerated: true
             })
-            .exec(res => {
-                // 绘制边框
+        }
+        const {
+            canvas,
+            ctx
+        } = await this.initCanvas()
+        this.canvas = canvas
+        this.ctx = ctx
+        //
+        this.ctx.scale(this.data.pixelRatio, this.data.pixelRatio)
+        this.canvas.width = this.canvas.width * this.data.pixelRatio
+        this.canvas.height = this.canvas.width
+
+        this.renderCanvas({
+            borderUrl,
+            cutImage
+        })
+    },
+    async initCanvas() {
+        return new Promise((resolve, reject) => {
+            wx.createSelectorQuery().select("#canvas").fields({
+                node: true,
+                size: true
+            }).exec((res) => {
+                // console.log(res)
                 const canvas = res[0].node
-                ctx = canvas.getContext('2d')
-                this.setData({
+                const ctx = canvas.getContext('2d')
+                resolve({
                     canvas,
                     ctx
                 })
-                const ratio = this.data.pixelRatio
-                ctx.scale(ratio, ratio)
-                setTimeout(() => {
-                    this.draw({url: this.data.borderUrl, dx: 0, dy: 0, dWidth: canvas.width, dHeight: canvas.height})
-                }, 100)
             })
-    },
-    // 加载图片
-    loadImage(url) {
-        const canvas = this.data.canvas
-        return new Promise((resolve, reject) => {
-            const img = canvas.createImage()
-            img.onload = () => resolve(img)
-            img.onerror = () => reject(new Error(`load ${url} fail`));
-            img.src = url
         })
     },
-    // 绘制图片
-    draw(options) {
-        const canvas = this.data.canvas
-        const ctx = this.data.ctx
-        const ratio = this.data.pixelRatio
-        const myOptions = Object.assign({}, options);
-        ctx.scale(ratio, ratio)
-        return this.loadImage(myOptions.url).then(img => {
-            const imgScale = img.width / img.height
-            canvas.width = canvas.width * ratio
-            canvas.height = canvas.width / imgScale
-            ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height)
-            // ctx.drawImage(img, 0, 0, img.width, img.height, myOptions.dx, myOptions.dy, myOptions.dWidth, myOptions.dHeight)
+    async drawImage(props) {
+        const {
+            src
+        } = props
+        if (!this.canvas) throw new Error('no canvas')
+        const img = this.canvas.createImage()
+        img.src = src
+        await new Promise((resolve, reject) => {
+            img.onload = resolve
         })
+
+        this.ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, this.canvas.width, this.canvas.height)
+
     },
-    // 选择图片
-    // chooseImg() {
-    //     wx.chooseMedia({
-    //         count: 1,
-    //         mediaType: ['image'],
-    //         sourceType: ['album'],
-    //         success: res => {
-    //             this.setData({
-    //                 isAvatarChosen: true,
-    //                 avatarUrl: res.tempFiles[0].tempFilePath,
-    //                 isGenerated: false
-    //             })
-    //         }
-    //     }) 
-    // },
-    chooseImg() {
-        wx.redirectTo({
-          url: '../cropper/cropper',
-        })
+    clearCanvas() {
+        const {
+            height,
+            width
+        } = this.canvas
+        this.ctx.clearRect(0, 0, width, height)
     },
-    // 预览图片(生成头像)
-    async generateAvatar() {
-        const canvas = this.data.canvas
-        if (this.data.avatarUrl != '') {
-            await this.draw({url: this.data.avatarUrl, dx: 0, dy: 0, dWidth: canvas.width, dHeight: canvas.height})
-            // await this.draw({url: this.data.borderUrl, dx: 0, dy: 0, dWidth: canvas.width, dHeight: canvas.height})
-            setTimeout(() =>{
-                this.draw({url: this.data.borderUrl, dx: 0, dy: 0, dWidth: canvas.width, dHeight: canvas.height})
-            }, 200)
-            this.setData({isGenerated: true})
-        } else {
-            wx.showToast({
-                title: '请先选择图片',
-                icon: 'none',
-                duration: 2000,
-              })
-            return
+    async renderCanvas({
+        clear = true,
+        cutImage = app.globalData.cutImage,
+        borderUrl = app.globalData.borderUrl
+    }) {
+        if (clear) this.clearCanvas()
+        if (cutImage) {
+            await this.drawImage({
+                src: cutImage
+            })
+        }
+        if (borderUrl) {
+            await this.drawImage({
+                src: borderUrl
+            })
         }
     },
-    // 下载图片
-    downloadAvatar() {
-
+    chooseMedia() {
+        wx.redirectTo({
+            url: '../cropper/cropper',
+        })
+    },
+    async saveAvatar() {
+        if (!this.canvas) throw new Error('no canvas')
+        const {
+            tempFilePath: filePath
+        } = await wx.canvasToTempFilePath({
+            canvas: this.canvas,
+        })
+        this.setData({
+            disableSaveAvatar: true
+        })
+        const res = await wx.saveImageToPhotosAlbum({
+            filePath,
+        })
+        // console.log(res)
+        // wx.showToast({
+        //     title: 'Saved',
+        // })
+    },
+    onShareAppMessage() {
+        return {
+            title: '华中大虎年新春头像框',
+            path: '/pages/index/index',
+            imageUrl: '../../imgs/index.jpg'
+        }
     },
 })

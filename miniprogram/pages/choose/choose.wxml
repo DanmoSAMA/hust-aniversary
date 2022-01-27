@@ -1,17 +1,11 @@
 <!--pages/choose/choose.wxml-->
-<!-- <text>pages/choose/choose.wxml</text> -->
 
 <view class="choose-container">
     <view class="choose-container-avatar">
-        <!-- <image src="{{isBorderChosen ? borderUrl : defaultBorderUrl}}" class="choose-container-avatar-img"></image> -->
-        <canvas 
-            type="2d"
-            id="canvas"
-            style="width: 380rpx; height: 380rpx;"
-        >
+        <canvas class="choose-container-avatar-canvas" type="2d" id="canvas">
         </canvas>
+        <view class="choose-container-avatar-mask"></view>
     </view>
-    <button class="choose-container-choose_btn" bindtap="chooseImg">选择图片</button>
-    <button class="choose-container-download_btn" bindtap="downloadAvatar" wx:if="{{isGenerated}}">下载头像</button>
-    <button class="choose-container-preview_btn" bindtap="generateAvatar" wx:else="">预览头像</button>
+    <button class="choose-container-choose_btn" bindtap="chooseMedia">选择图片</button>
+    <button class="choose-container-save_btn" bindtap="saveAvatar" wx:if="{{isGenerated}}">下载头像</button>
 </view>

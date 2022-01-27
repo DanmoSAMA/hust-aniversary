@@ -4,13 +4,13 @@ const app = getApp()
 Page({
     data: {
         src: '',
-        width: 200, //宽度
-        height: 200, //高度
+        width: 170, //宽度
+        height: 170, //高度
         max_width: 400,
         max_height: 400,
-        disable_rotate: false, //是否禁用旋转
+        disable_rotate: true, //是否禁用旋转
         disable_ratio: true, //锁定比例
-        limit_move: true, //是否限制移动
+        limit_move: false, //是否限制移动
         quality: 0,
         disable: false,
     },
@@ -66,7 +66,7 @@ Page({
                     success: () => {
                         app.globalData.cutImage = obj.url
                         wx.redirectTo({
-                          url: '../choose/choose',
+                            url: '../choose/choose',
                         })
                     },
                 })
@@ -87,7 +87,7 @@ Page({
                             cWidth: canvasWidth,
                             cHeight: canvasHeight,
                         })
-                        console.log('picInfo', canvasWidth, canvasHeight)
+                        // console.log('picInfo', canvasWidth, canvasHeight)
                         that.getCanvasImg(
                             obj.url,
                             canvasWidth,
@@ -149,5 +149,12 @@ Page({
                 fail: (res) => reject(res.errMsg),
             })
         })
+    },
+    onShareAppMessage() {
+        return {
+            title: '华中大虎年新春头像框',
+            path: '/pages/index/index',
+            imageUrl: '../../imgs/index.jpg'
+        }
     },
 })
