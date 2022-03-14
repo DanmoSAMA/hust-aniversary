@@ -4,7 +4,6 @@
     <view class="choose-container-avatar">
         <canvas class="choose-container-avatar-canvas" type="2d" id="canvas">
         </canvas>
-        <view class="choose-container-avatar-mask"></view>
     </view>
     <button class="choose-container-choose_btn" bindtap="chooseMedia">选择图片</button>
     <button class="choose-container-save_btn" bindtap="saveAvatar" wx:if="{{isGenerated}}">下载图片</button>

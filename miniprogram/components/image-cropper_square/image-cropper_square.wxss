@@ -12,8 +12,8 @@
   /* background:rgba(14, 13, 13,.8); */
   background: #eee;
   position: fixed;
-  top:-16vh;
-  /* left:-5vw; */
+  top: -12vh;
+  /* left: -8.5vw; */
   width:100vw;
   height:100vh;
   z-index: 1;
@@ -48,15 +48,12 @@
 .content>.content_middle{
   display: flex;
   height: 200px;
-  width:100%;
+  width: 100%;
 }
 .content_middle_middle{
-  /* width:200px!important; */
-  /* height: 200px!important; */
   box-sizing:border-box;
   position: relative;
   transition-duration: .3s;
-  /* top: -200rpx; */
 }
 .add_icon {
   position: absolute;
@@ -70,7 +67,6 @@
 .add_icon.hidden {
   display: none;
 }
-
 .content_middle_right{
   flex: auto;
 }

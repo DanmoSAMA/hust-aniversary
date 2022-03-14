@@ -16,7 +16,6 @@ Page({
             borderUrl,
             cutImage
         } = app.globalData
-        // console.log('globalData', app.globalData)
         if (cutImage != '') {
             this.setData({
                 isGenerated: true
@@ -28,10 +27,10 @@ Page({
         } = await this.initCanvas()
         this.canvas = canvas
         this.ctx = ctx
-        //
+    
         this.ctx.scale(this.data.pixelRatio, this.data.pixelRatio)
         this.canvas.width = this.canvas.width * this.data.pixelRatio
-        this.canvas.height = this.canvas.width
+        this.canvas.height = this.canvas.height * this.data.pixelRatio * 1.3
 
         this.renderCanvas({
             borderUrl,
@@ -94,7 +93,7 @@ Page({
     },
     chooseMedia() {
         wx.redirectTo({
-            url: '../cropper/cropper',
+            url: '../cropper_square/cropper_square',
         })
     },
     async saveAvatar() {

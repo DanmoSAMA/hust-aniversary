@@ -20,7 +20,8 @@
 }
 
 page {
-  background: rgb(14, 13, 13);
+  /* background: rgb(14, 13, 13); */
+  background: #4A4A4A;
 }
 
 view {
@@ -34,26 +35,37 @@ view {
   z-index: 10;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  top: 1150rpx;
+  bottom: 100rpx;
+  padding: 0 30rpx;
 }
 
 .bottom-btn {
-  width: 37%!important;
   height: 100rpx;
   line-height: 100rpx;
-  color: white;
-  background-color: #D4190C;
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 5rpx;
+  font-size: 35rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 300;
-  letter-spacing: 5rpx;
-  margin-bottom: 60rpx;
-  margin-right: 200rpx;
-  position: relative;
-  top: -350rpx;
-  font-size: 44rpx;
+  padding: 0;
+  background-color: #4A4A4A;
+}
+
+.bottom-btn-rechoose {
+  width: 25%!important;
+  margin: 0!important;
+}
+
+.bottom-btn-rotate {
+  width: 15%!important;
+  margin-left: 0!important;
+}
+
+.bottom-btn-submit {
+  width: 25%!important;
+  background-color: #D4190C;
   border-radius: 25rpx;
 }
 

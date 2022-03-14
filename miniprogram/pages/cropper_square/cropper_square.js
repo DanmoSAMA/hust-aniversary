@@ -4,8 +4,8 @@ const app = getApp()
 Page({
     data: {
         src: '',
-        width: 200, //宽度
-        height: 200, //高度
+        width: 228, //宽度
+        height: 152, //高度
         max_width: 400,
         max_height: 400,
         disable_rotate: true, //是否禁用旋转
@@ -66,7 +66,7 @@ Page({
                     success: () => {
                         app.globalData.cutImage = obj.url
                         wx.redirectTo({
-                            url: '../choose/choose',
+                            url: '../choose_square/choose_square',
                         })
                     },
                 })

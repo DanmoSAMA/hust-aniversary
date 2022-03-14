@@ -6,67 +6,46 @@ Page({
      * 页面的初始数据
      */
     data: {
-        // imgUrlArr: [
-        //     'http://cdn.danmoits.com/b-ag.png',
-        //     'http://cdn.danmoits.com/b-dj1.png',
-        //     'http://cdn.danmoits.com/b-dj2.png',
-        //     'http://cdn.danmoits.com/b-nyl1.png',
-        //     'http://cdn.danmoits.com/b-nyl2.png',
-        //     'http://cdn.danmoits.com/b-ball.png',
-        //     'http://cdn.danmoits.com/b-xse1.png',
-        //     'http://cdn.danmoits.com/b-xse2.png',
-        //     'http://cdn.danmoits.com/b-xsg.png',
-        //     'http://cdn.danmoits.com/b-zwt.png',
-        //     'http://cdn.danmoits.com/hs-spring.png',
-        //     'http://cdn.danmoits.com/hs-summer.png',
-        //     'http://cdn.danmoits.com/hs-fall.png',
-        //     'http://cdn.danmoits.com/hs-winter.png',
-        //     'http://cdn.danmoits.com/s-spring.png',
-        //     'http://cdn.danmoits.com/s-summer.png',
-        //     'http://cdn.danmoits.com/s-fall.png',
-        //     'http://cdn.danmoits.com/s-winter.png',
-        //     'http://cdn.danmoits.com/a-cat.png',
-        //     'http://cdn.danmoits.com/a-wt.png',
-        //     'http://cdn.danmoits.com/a-pig.png',
-        //     'http://cdn.danmoits.com/a-yx.png',
-        // ],
-        imgUrlArr: [
-            '../../imgs/b-ag.png',
-            '../../imgs/b-dj1.png',
-            '../../imgs/b-dj2.png',
-            '../../imgs/b-nyl1.png',
-            '../../imgs/b-nyl2.png',
-            '../../imgs/b-ball.png',
-            '../../imgs/b-xse1.png',
-            '../../imgs/b-xse2.png',
-            '../../imgs/b-xsg.png',
-            '../../imgs/b-zwt.png',
-            '../../imgs/hs-spring.png',
-            '../../imgs/hs-summer.png',
-            '../../imgs/hs-fall.png',
-            '../../imgs/hs-winter.png',
-            '../../imgs/s-spring.png',
-            '../../imgs/s-summer.png',
-            '../../imgs/s-fall.png',
-            '../../imgs/s-winter.png',
-            '../../imgs/a-cat.png',
-            '../../imgs/a-wt.png',
-            '../../imgs/a-pig.png',
-            '../../imgs/a-yx.png',
+        circleImgUrlArr: [
+            '../../imgs/circle1.png',
+            '../../imgs/circle2.png',
+            '../../imgs/circle3.png',
+            '../../imgs/circle4.png',
+            '../../imgs/circle5.png',
+        ],
+        squareImgUrlArr: [
+            '../../imgs/square1.png',
+            '../../imgs/square2.png',
+            '../../imgs/square3.png',
+            '../../imgs/square4.png',
+            '../../imgs/square5.png',
         ],
         borderUrl: '../../imgs/b-ag.png',
         // 是否滑到顶部
         isScrollUp: true,
+        // 点击的是圆形/方形头像框
+        type: -1,
     },
-    toChoose() {
+    toCropper() {
         wx.navigateTo({
-            // url: '../choose/choose',
             url: '../cropper/cropper',
             success: res => {
                 // console.log(this.data.borderUrl)
                 // res.eventChannel.emit('getBorderUrl', this.data.borderUrl)
             }
         })
+    },
+    toCropperSquare() {
+        wx.navigateTo({
+          url: '../cropper_square/cropper_square',
+        })
+    },
+    toWhere() {
+        if (this.data.type === 0) {
+            this.toCropper()
+        } else if (this.data.type === 1) {
+            this.toCropperSquare()
+        }
     },
     selectBorder(e) {
         this.setData({
@@ -76,15 +55,29 @@ Page({
         getApp().globalData.borderUrl = e.target.dataset.url
         // console.log(this.data)
     },
+    setCircle(e) {
+        this.selectBorder(e)
+        this.setData({
+            type: 0
+        })
+    },
+    setSquare(e) {
+        this.selectBorder(e)
+        this.setData({
+            type: 1
+        })
+    },
     scrollUp() {
         this.setData({
             isScrollUp: true
         })
+        // console.log('up')
     },
     scrollDown() {
         this.setData({
             isScrollUp: false
         })
+        // console.log('down')
     },
     onShareAppMessage() {
         return {
@@ -93,4 +86,8 @@ Page({
             imageUrl: '../../imgs/index.jpg'
         }
     },
+    test() {
+        // console.log(1)
+        console.log(this.data.type)
+    }
 })

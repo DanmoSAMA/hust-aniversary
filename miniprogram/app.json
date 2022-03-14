@@ -3,8 +3,10 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/choose/choose",
+    "pages/choose_square/choose_square",
     "pages/select/select",
-    "pages/cropper/cropper"
+    "pages/cropper/cropper",
+    "pages/cropper_square/cropper_square"
   ],
   "window": {
     "backgroundTextStyle": "light",
