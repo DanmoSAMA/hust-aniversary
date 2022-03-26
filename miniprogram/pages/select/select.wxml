@@ -1,5 +1,5 @@
 <!--pages/select/select.wxml-->
-<image src="../../imgs/bg.png" class="{{isScrollUp? 'select-bg' : 'select-bg resize'}}"></image>
+<image src="http://cdn.danmoits.com/bg.png" class="{{isScrollUp? 'select-bg' : 'select-bg resize'}}"></image>
 <view class="select-container">
     <view class="{{isScrollUp ? 'select-container-upper_wrapper' : 'select-container-upper_wrapper resize'}}">
         <view class="{{isScrollUp ? 'select-container-upper' : 'select-container-upper resize' }}" bindtap="toWhere">
@@ -7,12 +7,15 @@
         </view>
         <button class="{{isScrollUp ? 'select-container-btn' : 'select-container-btn hidden' }}">点击上方选择图片</button>
     </view>
-    <scroll-view class="{{isScrollUp ? 'select-container-main' : 'select-container-main resize' }}" enable-flex="true" scroll-y="true" bindscrolltoupper="scrollUp" bindscrolltolower="scrollDown" upper-threshold="5" lower-threshold="100">
+    <scroll-view class="{{isScrollUp ? 'select-container-main' : 'select-container-main resize' }}" enable-flex="true" scroll-y="true" bindscrolltoupper="scrollUp" bindscrolltolower="scrollDown" upper-threshold="50" lower-threshold="600">
         <view class="{{item === borderUrl ? 'select-container-main-img_container selected' : 'select-container-main-img_container'}}" wx:for="{{circleImgUrlArr}}">
             <image class="select-container-main-img_container-img" src="{{item}}" bindtap="setCircle" data-url="{{item}}"></image>
         </view>
         <view class="{{item === borderUrl ? 'select-container-main-img_container selected' : 'select-container-main-img_container'}}" wx:for="{{squareImgUrlArr}}">
             <image class="select-container-main-img_container-img" src="{{item}}" mode="widthFix" bindtap="setSquare" data-url="{{item}}"></image>
+        </view>
+        <view class="{{item === borderUrl ? 'select-container-main-img_container selected' : 'select-container-main-img_container'}}" wx:for="{{imgUrlArr}}">
+            <image class="select-container-main-img_container-img" src="{{item}}" bindtap="setCircle" data-url="{{item}}"></image>
         </view>
     </scroll-view>
 </view>

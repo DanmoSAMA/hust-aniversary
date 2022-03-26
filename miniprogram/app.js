@@ -1,7 +1,7 @@
 // app.js
 App({
   globalData: {
-    borderUrl: '/imgs/b-ag.png',
+    borderUrl: 'http://cdn.danmoits.com/ccircle1.png',
     cutImage: '',
   },
   onLaunch: async function () {

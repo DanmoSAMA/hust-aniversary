@@ -4,8 +4,8 @@ const app = getApp()
 Page({
     data: {
         src: '',
-        width: 200, //宽度
-        height: 200, //高度
+        width: 280, //宽度
+        height: 280, //高度
         max_width: 400,
         max_height: 400,
         disable_rotate: true, //是否禁用旋转
@@ -104,7 +104,7 @@ Page({
     },
     rotate() {
         //在用户旋转的基础上旋转90°
-        this.cropper.setAngle(this.cropper.data.angle += 90);
+        this.cropper.setAngle(this.cropper.data.angle -= 90);
     },
     //质量压缩
     getCanvasImg(tempFilePath, canvasWidth, canvasHeight, quality, callback) {
@@ -152,9 +152,9 @@ Page({
     },
     onShareAppMessage() {
         return {
-            title: '华中大虎年新春头像框',
+            title: '华中大70周年校庆云打卡',
             path: '/pages/index/index',
-            imageUrl: '../../imgs/index.jpg'
+            imageUrl: 'http://cdn.danmoits.com/new-index.jpg',
         }
     },
 })

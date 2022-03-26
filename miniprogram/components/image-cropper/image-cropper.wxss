@@ -1,7 +1,7 @@
 .mask {
   z-index: -1;
   /* background-color: rgba(0, 0, 0, 0.45); */
-  background-color: #4A4A4A;
+  background-color: #313131;
   position: fixed;
   top: 0;
   width: 100%;
@@ -12,7 +12,7 @@
   /* background:rgba(14, 13, 13,.8); */
   background: #eee;
   position: fixed;
-  top:-16vh;
+  top:-13vh;
   /* left:-5vw; */
   width:100vw;
   height:100vh;
@@ -35,11 +35,11 @@
 }
 .bg_black{
   /* background: rgba(0, 0, 0, 0.8)!important; */
-  background: #4A4A4A!important;
+  background: #313131!important;
 }
 .bg_gray{
   /* background: rgba(0, 0, 0, 0.45); */
-  background: #4A4A4A;
+  background: #313131;
   transition-duration: .35s;
 }
 .content>.content_top{
@@ -60,10 +60,10 @@
 }
 .add_icon {
   position: absolute;
-  font-size: 180rpx;
-  font-weight: 100;
+  font-size: 240rpx;
+  font-weight: 200;
   color: #E8554B;
-  top: 45%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -97,7 +97,7 @@
   pointer-events:none;
 }
 .border{
-  background: white;
+  /* background: white; */
   pointer-events:auto;
   position:absolute;
 }

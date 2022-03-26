@@ -6,25 +6,49 @@ Page({
      * 页面的初始数据
      */
     data: {
+        imgUrlArr: [
+            'http://cdn.danmoits.com/b-ag.png',
+            'http://cdn.danmoits.com/b-dj1.png',
+            'http://cdn.danmoits.com/b-dj2.png',
+            'http://cdn.danmoits.com/b-nyl1.png',
+            'http://cdn.danmoits.com/b-nyl2.png',
+            'http://cdn.danmoits.com/b-ball.png',
+            'http://cdn.danmoits.com/b-xse1.png',
+            'http://cdn.danmoits.com/b-xse2.png',
+            'http://cdn.danmoits.com/b-xsg.png',
+            'http://cdn.danmoits.com/b-zwt.png',
+            'http://cdn.danmoits.com/hs-spring.png',
+            'http://cdn.danmoits.com/hs-summer.png',
+            'http://cdn.danmoits.com/hs-fall.png',
+            'http://cdn.danmoits.com/hs-winter.png',
+            'http://cdn.danmoits.com/s-spring.png',
+            'http://cdn.danmoits.com/s-summer.png',
+            'http://cdn.danmoits.com/s-fall.png',
+            'http://cdn.danmoits.com/s-winter.png',
+            'http://cdn.danmoits.com/a-cat.png',
+            'http://cdn.danmoits.com/a-wt.png',
+            'http://cdn.danmoits.com/a-pig.png',
+            'http://cdn.danmoits.com/a-yx.png',
+        ],
         circleImgUrlArr: [
-            '../../imgs/circle1.png',
-            '../../imgs/circle2.png',
-            '../../imgs/circle3.png',
-            '../../imgs/circle4.png',
-            '../../imgs/circle5.png',
+            'http://cdn.danmoits.com/ccircle1.png',
+            'http://cdn.danmoits.com/ccircle2.png',
+            'http://cdn.danmoits.com/ccircle3.png',
+            'http://cdn.danmoits.com/ccircle4.png',
+            'http://cdn.danmoits.com/ccircle5.png',
         ],
         squareImgUrlArr: [
-            '../../imgs/square1.png',
-            '../../imgs/square2.png',
-            '../../imgs/square3.png',
-            '../../imgs/square4.png',
-            '../../imgs/square5.png',
+            'http://cdn.danmoits.com/square1.png',
+            'http://cdn.danmoits.com/square2.png',
+            'http://cdn.danmoits.com/square3.png',
+            'http://cdn.danmoits.com/square4.png',
+            'http://cdn.danmoits.com/square5.png',
         ],
-        borderUrl: '../../imgs/b-ag.png',
+        borderUrl: 'http://cdn.danmoits.com/ccircle1.png',
         // 是否滑到顶部
         isScrollUp: true,
         // 点击的是圆形/方形头像框
-        type: -1,
+        type: 0,
     },
     toCropper() {
         wx.navigateTo({
@@ -37,7 +61,7 @@ Page({
     },
     toCropperSquare() {
         wx.navigateTo({
-          url: '../cropper_square/cropper_square',
+            url: '../cropper_square/cropper_square',
         })
     },
     toWhere() {
@@ -81,9 +105,9 @@ Page({
     },
     onShareAppMessage() {
         return {
-            title: '华中大虎年新春头像框',
+            title: '华中大70周年校庆云打卡',
             path: '/pages/index/index',
-            imageUrl: '../../imgs/index.jpg'
+            imageUrl: 'http://cdn.danmoits.com/new-index.jpg',
         }
     },
     test() {

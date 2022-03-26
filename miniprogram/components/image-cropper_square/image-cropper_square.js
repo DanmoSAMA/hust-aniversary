@@ -11,54 +11,54 @@ Component({
      */
     'height': {
       type: Number,
-      value: 200
+      value: 280
     },
     /**
      * 裁剪框宽度
      */
     'width': {
       type: Number,
-      value: 200
+      value: 186.7
     },
     /**
      * 裁剪框最小尺寸
      */
     'min_width': {
       type: Number,
-      value: 100
+      value: 200
     },
     'min_height': {
       type: Number,
-      value: 100
+      value: 186.7
     },
     /**
      * 裁剪框最大尺寸
      */
     'max_width': {
       type: Number,
-      value: 300
+      value: 280
     },
     'max_height': {
       type: Number,
-      value: 300
+      value: 186.7
     },
     /**
      * 裁剪框禁止拖动
      */
     'disable_width': {
       type: Boolean,
-      value: false
+      value: true
     },
     'disable_height': {
       type: Boolean,
-      value: false
+      value: true
     },
     /**
      * 锁定裁剪框比例
      */
     'disable_ratio':{
       type: Boolean,
-      value: false
+      value: true
     },
     /**
      * 生成的图片尺寸相对剪裁框的比例
@@ -129,14 +129,14 @@ Component({
      */
     'min_scale': {
       type: Number,
-      value: 0.5
+      value: 0.2
     },
     /**
      * 最大缩放比
      */
     'max_scale': {
       type: Number,
-      value: 2
+      value: 3
     },
     /**
      * 是否禁用旋转
@@ -150,7 +150,7 @@ Component({
      */
     'limit_move':{
       type: Boolean,
-      value: false
+      value: true
     }
   },
   data: {

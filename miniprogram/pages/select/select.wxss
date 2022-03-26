@@ -52,7 +52,6 @@
 
 .select-container-upper {
     width: 28vh;
-    /* height: 28vh; */
     max-height: 28vh;
     border-radius: 5%;
     overflow: hidden;
@@ -81,7 +80,11 @@
     background-color: #fff;
     border-top-left-radius: 50rpx;
     border-top-right-radius: 50rpx;
-    padding-bottom: 20vh;
+    /* padding-bottom: 20vh; */
+}
+
+.select-container-main.resize {
+    height: 80vh;
 }
 
 .select-container-main-img_container {

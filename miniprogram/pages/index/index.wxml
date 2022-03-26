@@ -1,2 +1,2 @@
 <!--index.wxml-->
-<image src="../../imgs/index.jpg" class="bg" bindtap="toSelect"></image>
+<image src="http://cdn.danmoits.com/new-index.jpg" class="bg" bindtap="toSelect"></image>

@@ -13,16 +13,16 @@ Page({
   },
   onShareAppMessage() {
     return {
-      title: '华中大虎年新春头像框',
+      title: '华中大70周年校庆云打卡',
       path: '/pages/index/index',
-      imageUrl: '../../imgs/index.jpg'
+      imageUrl: 'http://cdn.danmoits.com/new-index.jpg',
     }
   },
   onShareTimeline() {
     return {
-      title: '华中大虎年新春头像框',
+      title: '华中大70周年校庆云打卡',
       path: '/pages/index/index',
-      imageUrl: '../../imgs/index.jpg'
+      imageUrl: 'http://cdn.danmoits.com/new-index.jpg',
     }
   }
 })

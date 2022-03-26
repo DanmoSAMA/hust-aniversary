@@ -5,6 +5,7 @@
   </button>
   <button class="bottom-btn bottom-btn-rotate">
     <icon class="iconfont icon-xuanzhuan" catchtap="rotate"></icon>
+    <!-- <image src="../../imgs/iPhone X、XS、11 Pro – 11.png" class="icon"></image> -->
   </button>
   <button catchtap='submit' class="bottom-btn bottom-btn-submit">
     确认
